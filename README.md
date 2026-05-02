@@ -55,6 +55,25 @@ Base-64 Emoji Encoding (64 symbols, 3 bytes → 4 emojis)
 
 ---
 
+## ♾️ Do Encrypted Emojis Expire?
+
+**No. Encrypted emoji blobs never expire.**
+
+The emoji layer is purely cosmetic — it is a Base-64 encoding of the raw AES-256-GCM ciphertext. There are no timestamps, no TTLs, and no server-side state involved whatsoever.
+
+| Property | Value |
+|---|---|
+| Expiry | **Never** |
+| TTL / Timestamp | None embedded |
+| Server dependency | None (fully client-side) |
+| Decryptable forever? | ✅ Yes — as long as you have the password |
+
+As long as you keep the password you used to encrypt a message, you can decrypt the emoji blob **years or decades later** in any modern browser. The cryptographic strength (AES-256-GCM + PBKDF2) does not degrade over time.
+
+> **The only way a blob becomes unrecoverable is if you lose the password.** Use a long, random passphrase and store it safely.
+
+---
+
 ## 🚀 Getting Started
 
 ### Run locally

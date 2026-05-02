@@ -15,6 +15,20 @@
   <canvas id="bgCanvas"></canvas>
   <div class="scanlines"></div>
 
+  <!-- Info button -->
+  <button class="info-btn" id="infoBtn" aria-label="Info" onclick="toggleInfo()">ℹ</button>
+  <div class="info-popup" id="infoPopup" role="tooltip" aria-hidden="true">
+    <div class="info-popup-header">😈 NO EXPIRY</div>
+    <p class="info-popup-body">
+      Encrypted emoji blobs <strong>never expire</strong>.<br>
+      The emoji layer is pure cosmetic encoding on top of
+      AES-256-GCM ciphertext — no timestamps, no TTL.
+      As long as you keep the password, you can decrypt
+      any blob you create, forever.
+    </p>
+    <div class="info-popup-footer">🔒 Zero-knowledge · Client-side only</div>
+  </div>
+
   <div class="container">
     <header class="header">
       <div class="skull-icon">😈</div>

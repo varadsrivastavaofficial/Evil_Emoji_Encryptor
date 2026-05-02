@@ -323,6 +323,73 @@ html, body {
 /* On the big title, keep the original font-size / letter-spacing */
 .dt-title  { display: inline; }
 
+/* ===== INFO BUTTON ===== */
+.info-btn {
+  position: fixed; top: 18px; right: 20px; z-index: 100;
+  width: 38px; height: 38px; border-radius: 50%;
+  border: 1px solid rgba(0,255,136,.45);
+  background: rgba(5,5,15,.75);
+  color: var(--green); font-size: 1.05rem;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 10px rgba(0,255,136,.25);
+  backdrop-filter: blur(6px);
+  transition: box-shadow .25s, border-color .25s, transform .2s;
+  font-family: serif;
+}
+.info-btn:hover {
+  box-shadow: var(--glow-g);
+  border-color: var(--green);
+  transform: scale(1.1);
+}
+.info-btn.active {
+  background: rgba(0,255,136,.12);
+  box-shadow: var(--glow-g);
+}
+
+/* ===== INFO POPUP ===== */
+.info-popup {
+  position: fixed; top: 66px; right: 18px; z-index: 99;
+  width: 300px;
+  background: rgba(6, 8, 20, 0.96);
+  border: 1px solid rgba(0,255,136,.3);
+  border-radius: 6px;
+  box-shadow: 0 0 24px rgba(0,255,136,.15), 0 8px 32px rgba(0,0,0,.7);
+  backdrop-filter: blur(12px);
+  padding: 18px 20px 14px;
+  display: flex; flex-direction: column; gap: 10px;
+  /* hidden by default */
+  opacity: 0;
+  transform: translateY(-8px) scale(.97);
+  pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+}
+.info-popup.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.info-popup-header {
+  font-family: var(--display); font-size: .72rem;
+  letter-spacing: 3px; color: var(--green);
+  text-shadow: var(--glow-g);
+  border-bottom: 1px solid rgba(0,255,136,.15);
+  padding-bottom: 8px;
+}
+.info-popup-body {
+  font-size: .78rem; line-height: 1.65;
+  color: var(--text); opacity: .9;
+}
+.info-popup-body strong {
+  color: var(--green);
+  text-shadow: 0 0 6px rgba(0,255,136,.5);
+}
+.info-popup-footer {
+  font-size: .6rem; letter-spacing: 2px;
+  color: var(--text-dim); opacity: .6;
+  border-top: 1px solid rgba(0,255,136,.1);
+  padding-top: 8px;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 480px) {
   .form-body { padding: 20px; }
@@ -330,4 +397,5 @@ html, body {
   .error-box { margin: 0 20px 20px; }
   .btn-row { flex-direction: column; }
   .btn--danger { flex: 1; }
+  .info-popup { width: calc(100vw - 36px); right: 18px; }
 }

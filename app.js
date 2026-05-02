@@ -276,3 +276,23 @@ document.getElementById('password').addEventListener('input', function() {
 document.addEventListener('keydown', e => {
   if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') handleAction();
 });
+
+// ===== INFO POPUP =====
+function toggleInfo() {
+  const popup = document.getElementById('infoPopup');
+  const btn   = document.getElementById('infoBtn');
+  const isOpen = popup.classList.toggle('visible');
+  popup.setAttribute('aria-hidden', !isOpen);
+  btn.classList.toggle('active', isOpen);
+}
+
+// Close info popup when clicking outside
+document.addEventListener('click', e => {
+  const popup = document.getElementById('infoPopup');
+  const btn   = document.getElementById('infoBtn');
+  if (popup.classList.contains('visible') && !popup.contains(e.target) && e.target !== btn) {
+    popup.classList.remove('visible');
+    popup.setAttribute('aria-hidden', 'true');
+    btn.classList.remove('active');
+  }
+});

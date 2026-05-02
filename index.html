@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evil Emoji Encryptor 😈</title>
+  <meta name="description" content="Encrypt your secret messages into emoji sequences using military-grade AES-256-GCM. Zero-knowledge, fully client-side." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="border-glow.css" />
+</head>
+<body>
+  <canvas id="bgCanvas"></canvas>
+  <div class="scanlines"></div>
+
+  <div class="container">
+    <header class="header">
+      <div class="skull-icon">😈</div>
+      <h1 class="title glitch" data-text="EVIL EMOJI ENCRYPTOR">EVIL EMOJI ENCRYPTOR</h1>
+      <div class="badges">
+        <span class="badge">AES-256-GCM</span>
+        <span class="badge">PBKDF2 · 600K</span>
+        <span class="badge">ZERO-KNOWLEDGE</span>
+        <span class="badge">CLIENT-SIDE</span>
+      </div>
+    </header>
+
+    <main class="card">
+      <div class="tabs">
+        <button class="tab tab--active" id="encryptTab" onclick="switchTab('encrypt')">🔒 ENCRYPT</button>
+        <button class="tab" id="decryptTab" onclick="switchTab('decrypt')">🔓 DECRYPT</button>
+      </div>
+
+      <div class="form-body">
+        <div class="form-group">
+          <label class="form-label" id="inputLabel" for="inputText">📝 PLAINTEXT MESSAGE</label>
+          <textarea id="inputText" class="form-textarea" placeholder="Type your secret message here..." rows="5" spellcheck="false"></textarea>
+          <div class="char-count"><span id="charCount">0</span> characters</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">🔑 ENCRYPTION KEY</label>
+          <div class="input-wrapper">
+            <input type="password" id="password" class="form-input" placeholder="Enter a strong password..." autocomplete="off" />
+            <button class="icon-btn" id="togglePw" onclick="togglePassword()" aria-label="Toggle password visibility">👁</button>
+          </div>
+          <div class="strength-container">
+            <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
+            <span class="strength-label" id="strengthLabel">—</span>
+          </div>
+          <div class="strength-hint" id="strengthHint"></div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn--primary" id="actionBtn" onclick="handleAction()">
+            <span id="actionIcon">🔒</span>
+            <span id="actionLabel">ENCRYPT</span>
+          </button>
+          <button class="btn btn--danger" onclick="clearAll()">🗑 CLEAR</button>
+        </div>
+      </div>
+
+      <div class="output-section" id="outputSection">
+        <div class="output-header">
+          <span class="form-label" id="outputLabel">🔐 ENCRYPTED OUTPUT</span>
+          <button class="copy-btn" id="copyBtn" onclick="copyOutput()">📋 COPY</button>
+        </div>
+        <div class="output-box" id="outputBox"></div>
+      </div>
+
+      <div class="error-box" id="errorBox"></div>
+    </main>
+
+    <footer class="footer">
+      <p>🔒 All operations run locally in your browser. Your data never leaves your device.</p>
+      <p class="footer-small">Powered by WebCrypto API &amp; AES-256-GCM</p>
+    </footer>
+  </div>
+
+  <script src="background.js"></script>
+  <script src="decrypted-text.js"></script>
+  <script src="text-type.js"></script>
+  <script src="border-glow.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
